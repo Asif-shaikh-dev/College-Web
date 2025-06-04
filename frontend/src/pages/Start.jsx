@@ -93,7 +93,7 @@ const Start = () => {
         <CollegeDetails />
         <PresidentIntro />
         <AdmissionEnquiry />
-
+      
       </div>
 
 
