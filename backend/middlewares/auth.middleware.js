@@ -1,5 +1,5 @@
 const studentModel = require('../models/student.models');
-const bcrypt = require('bcrypt')    
+const bcrypt = require('bcryptjs')    
 const jwt = require('jsonwebtoken');
 const blacklistTokenModel = require('../models/blacklistToken.models');
 
