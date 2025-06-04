@@ -1,0 +1,19 @@
+.approval-list-table td{
+    padding: 10px;
+}
+.approval-page-header{
+    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.approval-page-header h1{
+    margin-bottom: 1rem;
+}
+
+.approval-list-btn button{
+    padding :10px 20px;
+}
+.application-approve-reject-btn button{
+    padding: 10px;
+
+}

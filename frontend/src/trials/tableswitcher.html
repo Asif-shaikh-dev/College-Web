@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Switcher</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .button-container {
+            margin: 20px;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            background-color: #2F5597;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #1E3E6E;
+        }
+
+        .table-container {
+            width: 80%;
+            margin: auto;
+            border: 1px solid #ddd;
+            height: 400px; /* Set height for iframe */
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="button-container">
+        <button onclick="loadTable('undergraduate.html')">UNDERGRADUATE</button>
+        <button onclick="loadTable('postgraduate.html')">POST GRADUATE</button>
+    </div>
+
+    <div class="table-container">
+        <iframe id="tableFrame" src="undergraduate.html"></iframe>
+    </div>
+
+    <script>
+        function loadTable(tablePage) {
+            document.getElementById('tableFrame').src = tablePage;
+        }
+    </script>
+
+</body>
+</html>

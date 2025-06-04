@@ -1,0 +1,31 @@
+.main {
+    padding: 10px;
+}
+
+.names {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+}
+/* button{
+    background-color: blue;
+} */
+
+.work {
+    font-size: 14px;
+}
+
+.info button {
+    margin-top: 10px;
+    padding: 5px;
+}
+
+.college-info h1 {
+    text-transform: uppercase;
+}
+
+.college-info button{
+    margin-top: 12px;
+    padding: 5px;
+}

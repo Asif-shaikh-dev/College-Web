@@ -1,0 +1,17 @@
+.box{
+    padding: 10px;
+}
+
+.about-info{
+    padding: 15px;
+}
+
+.about-info button{
+    margin-top: 5px;
+    padding: 2px 5px;
+}
+
+.whole-box{
+    padding: 10px 100px;
+    /* margin: 0 auto; */
+}

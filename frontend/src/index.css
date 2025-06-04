@@ -1,0 +1,31 @@
+@import "tailwindcss";
+:root {
+    --primary-color: #4F46E5;
+    --secondary-color: #818CF8;
+    --accent-color: #6366F1;
+    --background-color: #F9FAFB;
+  }
+  
+  body{
+    overflow-x: hidden;
+    /* overflow: auto; */
+  }
+/* Use --primary-color for main elements like headers and buttons 
+header {
+  background-color: var(--primary-color);
+}
+ Use --secondary-color for secondary elements like subheaders and links 
+h2, a {
+  color: var(--secondary-color);
+}
+
+ Use --accent-color for highlighting important text or elements 
+.highlight {
+  color: var(--accent-color);
+}
+
+Use --background-color for the main background of the page 
+body {
+  background-color: var(--background-color);
+}
+*/

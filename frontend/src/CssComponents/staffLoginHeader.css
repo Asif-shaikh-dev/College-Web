@@ -1,0 +1,72 @@
+.staff-login nav {
+    padding: 10px;
+    padding-left: 70px;
+}
+.heading2{
+    color: rgba(255, 255, 0, 0.904);
+}
+.staff-login .header {
+    /* height: 200px; */
+    background-color: rgb(5, 5, 74);
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+
+
+.staff-container ul li svg {
+
+    /* height: 35px; */
+    /* padding: 0; */
+    padding-top: 5px;
+}
+
+.btn-content2 {
+    /* margin-top: 5px; */
+    position: absolute;
+    padding: 5px;
+    border-radius: 3px;
+    color: #666666;
+    /* font-size: 14px; */
+    /* border: gray; */
+    padding-right: 8px;
+    padding-left: 8px;
+    border: 1px solid rgb(222, 215, 215);
+    top: 40%;
+    left: 0;
+    background-color: #fff;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    visibility: hidden;
+    max-height: 0;
+    transition: max-height 0.2s ease-in-out;
+}
+
+
+
+.staff-container ul li:hover .btn-content2 {
+    max-height: 500px;
+    visibility: visible;
+}
+
+.staff-container ul li:hover{
+    
+    transition: 0.2s ease-in-out;
+    color: rgb(229, 74, 18);
+}
+.option2 {
+    color: black;
+    padding: 6px;
+}
+
+.option2:hover {
+    
+    transition: 0.2s ease-in-out;
+    /* background-color: rgb(198, 188, 188); */
+    background-color: #efeeee;
+   
+
+}

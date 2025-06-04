@@ -1,0 +1,322 @@
+@import url('https://fonts.googleapis.com/css2?family=Kirang+Haerang&family=Lexend+Deca:wght@100..900&family=Playwrite+HR+Lijeva:wght@100..400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Protest+Revolution&family=Roboto&family=Yuji+Mai&display=swap');
+
+:root{
+    --base-clr:#11121a;
+    --line-clr: #42434a;
+    --hover-clr:#222533;
+    --text-clr:#e6e6ef;
+    --accent-clr:#5e63ff;
+    --secondary-text-clr:#b0b3c1;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    font-family: "Poppins", sans-serif;
+    line-height: 1.5em;
+}
+
+#sidebar{
+    box-sizing: border-box;
+    height: 100vh;
+    width: 300px;
+    padding: 5px 5px;
+    background-color: var(--base-clr);
+    border-right: 1px solid var(--line-clr);
+    /* background-color: red; */
+    position: sticky;
+    top: 0;
+    align-self: start;
+    transition: 300ms ease-in-out;
+    overflow: hidden;
+    overflow-y: auto;
+    white-space: nowrap;
+
+
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: var(--line-clr) transparent; /* For Firefox */
+}
+/* WebKit (Chrome/Safari) scrollbar styling */
+
+#sidebar::-webkit-scrollbar {
+
+    width: 6px; /* Narrow scrollbar width */
+}
+
+#sidebar::-webkit-scrollbar-track {
+    background: transparent; /* Make track transparent */
+    margin: 8px 0;
+}
+
+#sidebar::-webkit-scrollbar-thumb {
+    background-color: var(--line-clr); /* Use your existing line color */
+    border-radius: 4px;
+    border: 2px solid transparent; /* Creates padding effect */
+    background-clip: content-box; /* Keeps border transparent */
+    cursor: pointer;
+}
+
+#sidebar::-webkit-scrollbar-thumb:hover {
+    cursor: pointer;
+    
+    background-color: color-mix(in srgb, var(--line-clr) 80%, white); /* Hover effect */
+}
+
+
+#sidebar.close{
+    padding: 5px;
+    width: 60px;
+}
+
+#sidebar svg{
+    flex-shrink: 0;
+    fill: var(--text-clr);
+}
+
+#sidebar a span, #sidebar .dropdown-btn span{
+    flex-grow: 1;
+}
+#sidebar a:hover, #sidebar .dropdown-btn:hover{
+    background-color: var(--hover-clr);
+}
+
+
+/* #sidebar .sub-menu{
+    display: grid;
+    grid-template-rows: 0fr;
+    transition:  300ms ease-in-out;
+}
+#sidebar .sub-menu  div{
+    overflow: hidden;
+}
+#sidebar .sub-menu.show{
+    grid-template-rows: 1fr;
+}   */
+
+#sidebar .sub-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+}
+
+#sidebar .sub-menu.show {
+    max-height: 500px; /* Adjust this value based on the maximum expected height of your sub-menu */
+}
+
+#sidebar .sub-menu div {
+    overflow: hidden;
+}
+
+/* Add this to make closing slightly faster than opening */
+#sidebar .sub-menu:not(.show) {
+    transition: max-height 200ms ease-out;
+}
+
+.dropdown-btn svg{
+    transition: 200ms ease;
+}
+.rotate svg:last-child{
+    rotate: -180deg;
+}
+
+#sidebar .sub-menu{
+    font-size: 0.8rem;
+    padding-left: 2rem;
+}
+
+.toggle-btn{
+    margin-left: auto;
+    padding: 1em;
+    border: none;
+    border-radius: .5em;
+}
+.toggle-btn svg{
+    transition: rotate 150ms ease;
+    /* z-index: 2100; */
+}
+.toggle-btn:hover{
+    background-color: var(--hover-clr);
+}
+
+
+#sidebar ul{
+    list-style: none;
+}
+
+#sidebar > ul >li:first-child{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+} 
+#sidebar > ul >li:first-child .logo{
+    font-weight: 600;
+    overflow: hidden;
+}
+#sidebar > ul > li:first-child .logo p{
+    font-weight: 600;
+    color: var(--accent-clr);
+    display: inline-block;
+    animation: marquee 7s linear infinite;
+
+
+}
+#sidebar ul li button span{
+   font-size: 0.9rem;
+   overflow: hidden;
+   /* background-color: red; */
+   width: 60%;
+}
+
+
+
+@keyframes marquee {
+    from {
+        transform: translateX(50%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+/* 
+#sidebar ul li.active a{
+    color: var(--accent-clr);
+
+    svg{
+    fill: var(--accent-clr);
+    }   not working in windows 7
+} */
+#sidebar ul li.active a >svg{
+    fill: var(--accent-clr);
+}
+
+#sidebar a, #sidebar .dropdown-btn , #sidebar .logo{
+    border-radius: .5em;
+    padding: .85em;
+    text-decoration: none;
+    color: var(--text-clr);
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+.dropdown-btn{
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+}
+/* @media (max-width :800px) {
+    body{
+        grid-template-columns: 1fr;
+    }
+    main{
+        padding: 2em 1em 60px 1em;
+    }
+    .container2{
+        border: none;
+        padding: 0;
+    }
+    #sidebar{
+        height: 60px;
+        width: 100%;
+        border-right:none ;
+        border-top: 1px solid var(--line-clr);
+        padding: 0;
+        position: fixed;
+        top: unset;
+        bottom: 0;
+    }
+   #sidebar ul{
+    padding: 0;
+    display: grid;
+    grid-auto-columns: 60px;
+    grid-auto-flow: column;
+    align-items: center;
+  
+    overflow-x: scroll;
+   }
+   #sidebar ul li{
+    height: 100%;
+   }
+   #sidebar ul a,#sidebar ul .dropdown-btn{
+    height: 60px;
+    width: 60px;
+    padding: 0;
+    border-radius: 0;
+    justify-content: center;
+   }
+    #sidebar ul li .sub-menu.show{
+        position: fixed;
+        bottom: 60px;
+        left: 0;
+        box-sizing: border-box;
+        height: 60px;
+        width: 100%;
+        background-color: var(--hover-clr);
+        border-top: 1px solid var(--line-clr);
+        display: flex;
+        justify-content: center;
+        
+    }
+    #sidebar ul li .sub-menu.show li{
+        display: inline-flex;
+        
+
+    }
+    #sidebar ul li .sub-menu.show div{
+        overflow-x: auto;
+    }
+    #sidebar ul li .sub-menu.show a{
+        box-sizing: border-box;
+        padding: 1em;
+        width: auto;
+        justify-content: center;
+    }
+
+    #sidebar ul li span,ul li:first-child ,.dropdown-btn svg:last-child{
+        display: none;
+    }
+} */
+
+
+
+/* ----------------------------------------- */
+
+/* #sidebar {
+    transition: width 300ms ease-in-out;
+}
+
+#sidebar.close {
+    width: 60px !important;
+}
+ */
+
+
+
+
+
+/* ---------------------------------------------------- */
+
+main{
+    padding: min(30px,7%);
+
+}
+main p{
+    color: var(--secondary-text-clr);
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.container2{
+    border: 1px solid var(--line-clr);
+    border-radius: 1em;
+    margin-bottom: 20px;
+    padding: min(3em,15%);
+
+    
+}
+main h2  p { margin-top: 1em }

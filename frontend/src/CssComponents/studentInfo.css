@@ -1,0 +1,23 @@
+
+.student-table{
+    margin-bottom: 10px;
+}
+.student-table input{
+    padding: 8px;
+}
+.student-table button{
+    padding: 5px;
+}
+.tableBody{
+    padding: 10px;
+}
+h3{
+   padding: 20px;
+}
+h2{
+    /* background-color: red; */
+    padding: 20px;
+}
+h2+span{
+    padding: 20px;
+}

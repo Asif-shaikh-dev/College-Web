@@ -1,0 +1,22 @@
+.student-deta-update-otp{
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.div-for-otp-value{
+    background-color: red;
+    /* padding: 10px; */
+}
+
+.student-deta-update-birthdate{
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.otp-submit-for-edit {
+    padding: 10px;
+}
+.otp-submit-for-edit button{
+    padding: 7px;
+
+}

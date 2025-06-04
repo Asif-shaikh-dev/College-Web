@@ -1,0 +1,13 @@
+.hod-dahsboard-table td{
+    text-align: center;
+    padding: 10px;
+}
+
+.hod-dahsboard-table button{
+    padding: 6px;
+}
+
+/* .hod-dashboard select{
+    padding: 5px;
+    margin: 5px;
+} */

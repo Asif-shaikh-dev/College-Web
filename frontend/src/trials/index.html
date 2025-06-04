@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled Table</title>
+    <style>
+        table {
+            width: 60%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+
+        th, td {
+            border: 1px solid white;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #2F5597; /* Dark Blue */
+            color: white;
+            text-align: center;
+        }
+
+        td {
+            background-color: #D6E0F0; /* Light Blue */
+        }
+
+        tr:nth-child(even) td {
+            background-color: #F0F4FF; /* Lighter Blue for alternate rows */
+        }
+    </style>
+</head>
+<body>
+
+    <table>
+        <tr>
+            <th>Sr. No.</th>
+            <th>Course</th>
+            <th>Name of Staff</th>
+            <th>Mobile</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>B.A</td>
+            <td>Ms. Shilpa Ammanagi / Shaikh Shafiya</td>
+            <td>9503676576</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>B.Com</td>
+            <td>Ms. Nazia Maldar</td>
+            <td>9405954806</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>B.Sc</td>
+            <td>Dr. Naseem Deshpande</td>
+            <td>9420496820</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>B.Sc. (Comp.Sci.)</td>
+            <td>Ms. Sadiya Inamdar</td>
+            <td>8446451754 / 9623623639</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>BBA</td>
+            <td>Ms. Ameena Sabooni</td>
+            <td>8766460520</td>
+        </tr>
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+.studentPaymentDiv{
+    padding: 20px;
+}
+
+.remaining-fees{
+    margin-bottom: 20px;
+}
+
+.payment-holder-name{
+    /* padding: 10px; */
+}
+.payment-card{
+    padding: 10px;
+    margin-top: 50px;
+    /* background-color: red; */
+}
+.input-amt-fees{
+    margin-bottom: 10px;
+}
+.pay-btn{
+    padding: 10px;
+}

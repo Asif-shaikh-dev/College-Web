@@ -1,0 +1,53 @@
+/* Custom Padding/Margin Classes */
+
+
+.form-wrapper-padding {
+  padding: 2.5rem !important;
+}
+
+.section-group-margin {
+  margin-bottom: 2.5rem !important;
+}
+
+.input-field-padding {
+  padding: 0.875rem 1.25rem !important;
+}
+
+.file-upload-margin {
+  margin: 1rem 0 !important;
+}
+
+.submit-btn-margin {
+  margin-top: 2rem !important;
+  padding: 10px;
+  
+}
+
+.grid-gap {
+  gap: 1.5rem !important;
+}
+
+.section-title-margin {
+  margin: 1.5rem 0 !important;
+  /* background-color: red; */
+}
+
+
+.textarea-padding {
+  padding: 1rem !important;
+}
+.documents-submit-css{
+  padding: 10px;
+}
+
+.documents-submit-div-css{
+padding: 15px;
+}
+
+.documents-submit-h2-css{
+  padding: 0;
+}
+
+.default-subjects-css{
+  padding: 5px;
+}
