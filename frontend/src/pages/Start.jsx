@@ -3,7 +3,7 @@ import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
-import '../CssComponents/Start.css'
+import '../CssComponents/start.css'
 import MenuOptions from '../components/menuOptions'
 
 
