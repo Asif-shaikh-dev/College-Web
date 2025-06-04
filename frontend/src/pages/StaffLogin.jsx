@@ -36,7 +36,7 @@ const StaffLogin = () => {
     const sendOtp = async () => {
         setLoading(true);
         try {
-            const response = await axios.post("http://localhost:4000/students/send-reset-otp", { email });
+            const response = await axios.post("https://college-web-backend-6opl.onrender.com/students/send-reset-otp", { email });
             // setMessage(response.data.message);
             
             if (response.data.success){
@@ -57,7 +57,7 @@ const StaffLogin = () => {
         setLoading(true);
         localStorage.setItem("resetRequested", "true");
         try {
-            const response = await axios.post("http://localhost:4000/students/reset-password", {
+            const response = await axios.post("https://college-web-backend-6opl.onrender.com/students/reset-password", {
                 email,
                 otp,
                 newPassword,
@@ -96,7 +96,7 @@ const StaffLogin = () => {
       }
   
       try {
-        const response = await axios.post("http://localhost:4000/teacher/login", {
+        const response = await axios.post("https://college-web-backend-6opl.onrender.com/teacher/login", {
           userType,
           email2,
           password,

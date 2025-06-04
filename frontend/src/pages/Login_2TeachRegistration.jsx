@@ -50,7 +50,7 @@ const Login2TeachRegistration = () => {
         e.preventDefault();
         setisLoading(true)
         try {
-            const response = await axios.post("http://localhost:4000/teacher/register", {
+            const response = await axios.post("https://college-web-backend-6opl.onrender.com/teacher/register", {
                 name,
                 email,
                 mobile,
