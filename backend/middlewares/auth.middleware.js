@@ -1,7 +1,9 @@
 const studentModel = require('../models/student.models');
 const bcrypt = require('bcryptjs')    
 const jwt = require('jsonwebtoken');
-const blacklistTokenModel = require('../models/blacklistToken.models');
+const blacklistTokenModel = require('../models/blackListToken.models');
+
+// console.log('Blacklist Token Model:', blacklistTokenModel);
 
 
 module.exports.authStudent = async (req,res,next) =>{
