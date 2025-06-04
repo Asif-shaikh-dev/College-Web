@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import '../CssComponents/studentLoginHeader.css';
+import '../CssComponents/studentloginHeader.css';
 import { StudentDataContext } from '../context/StudentContext';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';

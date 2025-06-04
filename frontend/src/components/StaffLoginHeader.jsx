@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import '../CssComponents/StaffLoginHeader.css'
+import '../CssComponents/staffLoginHeader.css'
 import { Link } from 'react-router-dom';
 import { StudentDataContext } from '../context/StudentContext';
 import { useContext } from 'react';

@@ -21,7 +21,7 @@ const navigate = useNavigate();
 
   const fetchStudents = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/teacher/students", {
+      const response = await axios.get("https://college-web-backend-6opl.onrender.com/teacher/students", {
         withCredentials: true
       });
 
