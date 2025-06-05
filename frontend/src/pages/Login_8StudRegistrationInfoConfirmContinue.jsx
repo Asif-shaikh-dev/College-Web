@@ -131,7 +131,7 @@ const Login_8StudRegistrationInfoConfirmContinue = () => {
 
     const handleAddmissionPayment = async () => {
         try {
-            const response = await axios.post("https://college-web-backend-6opl.onrender.com/students/pay-admission-fee", {}, { withCredentials: true });
+            const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/students/pay-admission-fee`, {}, { withCredentials: true });
             const data = response.data;
             if (response.status === 201) {
                 toast.success("Fee Paid")
@@ -285,7 +285,7 @@ const Login_8StudRegistrationInfoConfirmContinue = () => {
 
 
         try {
-            const response = await axios.post("https://college-web-backend-6opl.onrender.com/vriddhi/admission", formDataToSend);
+            const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/vriddhi/admission`, formDataToSend);
 
             // console.log("Admission Submitted:", response.data);
 
@@ -323,7 +323,7 @@ const Login_8StudRegistrationInfoConfirmContinue = () => {
     const sendOtp = async (email) => {
         setLoading(true)
         try {
-            const response = await axios.post("https://college-web-backend-6opl.onrender.com/students/send-otp", { email: student.email }, { withCredentials: true });
+            const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/students/send-otp`, { email: student.email }, { withCredentials: true });
             const data = response.data;
 
             if (data.success) {
@@ -347,7 +347,7 @@ const Login_8StudRegistrationInfoConfirmContinue = () => {
     // Verify OTP and update data
     const updateStudentData = async () => {
         try {
-            const response = await axios.post("https://college-web-backend-6opl.onrender.com/students/update", { email: student.email, field: selectedField, newValue, otp });
+            const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/students/update`, { email: student.email, field: selectedField, newValue, otp });
 
 
             if (response.data.success) {

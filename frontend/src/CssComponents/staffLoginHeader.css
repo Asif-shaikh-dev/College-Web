@@ -1,6 +1,6 @@
 .staff-login nav {
     padding: 10px;
-    padding-left: 70px;
+    /* padding-left: 70px; */
 }
 .heading2{
     color: rgba(255, 255, 0, 0.904);
@@ -8,8 +8,8 @@
 .staff-login .header {
     /* height: 200px; */
     background-color: rgb(5, 5, 74);
-    padding-left: 50px;
-    padding-right: 50px;
+    /* padding-left: 50px;
+    padding-right: 50px; */
 }
 
 
@@ -22,20 +22,21 @@
 }
 
 .btn-content2 {
-    /* margin-top: 5px; */
+    margin-top: 20px;
+    /* margin-right: 120px; */
     position: absolute;
-    padding: 5px;
+    /* padding: 5px; */
     border-radius: 3px;
     color: #666666;
     /* font-size: 14px; */
     /* border: gray; */
-    padding-right: 8px;
-    padding-left: 8px;
+    /* padding-right: 8px; */
+    padding-left: 4px;
     border: 1px solid rgb(222, 215, 215);
     top: 40%;
     left: 0;
     background-color: #fff;
-    min-width: 150px;
+    /* min-width: 150px; */
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
     white-space: nowrap;

@@ -36,18 +36,19 @@ const StaffLogin = () => {
     const sendOtp = async () => {
         setLoading(true);
         try {
-            const response = await axios.post("https://college-web-backend-6opl.onrender.com/students/send-reset-otp", { email });
+            const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/students/send-reset-otp`, { email });
             // setMessage(response.data.message);
             
             if (response.data.success){
                 toast.success(response.data.message);
                 setStep(2);
             } else{
-                
+                console.log(response.data.message);
                 toast.error(response.data.message);
             }
         } catch (error) {
             toast.success("Something went wrong. Try again.");
+            console.log("Error int the sendOtp function:", error);
             // setMessage("Something went wrong. Try again.");
         }
         setLoading(false);
@@ -57,7 +58,7 @@ const StaffLogin = () => {
         setLoading(true);
         localStorage.setItem("resetRequested", "true");
         try {
-            const response = await axios.post("https://college-web-backend-6opl.onrender.com/students/reset-password", {
+            const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/students/reset-password`, {
                 email,
                 otp,
                 newPassword,
@@ -96,7 +97,7 @@ const StaffLogin = () => {
       }
   
       try {
-        const response = await axios.post("https://college-web-backend-6opl.onrender.com/teacher/login", {
+        const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/teacher/login`, {
           userType,
           email2,
           password,

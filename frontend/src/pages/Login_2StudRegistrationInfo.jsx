@@ -16,38 +16,15 @@ const Login_2StudRegistrationInfo = () => {
     const [mobile, setMobile] = useState('');
     const [birthdate, setBirthdate] = useState('');
     const [captcha, setCaptcha] = useState('');
-    
-    const [color,setColor] = useState('bg-green-600')
+
+    const [color, setColor] = useState('bg-green-600')
 
 
     const { student, setStudent } = useContext(StudentDataContext);
     // console.log(StudentDataContext)
     const navigate = useNavigate();
 
-    // const submitHandeler =async(e) => {
-    //     e.preventDefault(); // Prevents the page from reloading
 
-    //     const studentData = {
-    //         email: email,
-    //         password: password,
-    //         fullname: name,
-    //         mobile: mobile,
-    //         birthdate: birthdate,
-    //         captcha: captcha
-    //     }
-    //     // console.log(userData);
-    //     const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/students/login_2StudRegistrationInfo`, studentData);
-    //     if(response.status === 200){
-    //         const data = response.data;
-    //         // console.log(data);
-    //         setStudent(data.student);
-    //         localStorage.setItem('token', JSON.stringify(data.token));
-    //         navigate('/');
-
-    //     }
-    //     setEmail('');
-    //     setPassword('');
-    // }
     const submitHandeler = async (e) => {
         e.preventDefault(); // Prevents page reload
 
@@ -62,12 +39,8 @@ const Login_2StudRegistrationInfo = () => {
             };
 
 
-            if (!studentData.email || !studentData.password ||!studentData.birthdate  ||!studentData.fullname ||!studentData.mobile ||!studentData.captcha ) {
-            //     setMessage("All fields are required!");
-            //  setColor('bg-red-800')
+            if (!studentData.email || !studentData.password || !studentData.birthdate || !studentData.fullname || !studentData.mobile || !studentData.captcha) {
 
-            //     setPanelOpen(true);
-            //     setTimeout(() => setPanelOpen(false), 2000);
                 toast.error("All fields are required!")
                 return; // Stop execution if validation fails
             }
@@ -83,8 +56,8 @@ const Login_2StudRegistrationInfo = () => {
                 }
             );
 
-            
-                        // console.log(response.status)
+
+            // console.log(response.status)
 
             console.log("Request URL:", `${import.meta.env.VITE_BASE_URL}/students/login_2StudRegistrationInfo`);
 
@@ -95,24 +68,15 @@ const Login_2StudRegistrationInfo = () => {
                 toast.success("Registration Successful");
                 navigate("/login_3StudLogin");
 
-                // setColor('bg-green-800')
-                // setMessage("Registration Successful");
-                // setPanelOpen(true); // Show panel
-                // setTimeout(() => {
-                //     setPanelOpen(false);
-                // }, 2000);
 
-            }else{
+
+            } else {
                 toast.error("Registration Failed")
-                // setMessage("Registration Failed");
-                // setPanelOpen(true); // Show panel
-                // setTimeout(() => {
-                //     setPanelOpen(false);
-                // }, 2000);
+
             }
 
             // Clear form fields
-            
+
         } catch (err) {
             if (err.response && err.response.data.errors) {
                 toast.error(err.response.data.errors[0].msg)
@@ -121,10 +85,7 @@ const Login_2StudRegistrationInfo = () => {
                 toast.error("Something went wrong. Please try again.")
                 // setMessage("Something went wrong. Please try again.");
             }
-            // setMessage(error.msg || "Something went wrong!");
-        //     setColor('bg-red-800')
-        //      setPanelOpen(true);
-        // setTimeout(() => setPanelOpen(false), 2000);
+
         }
 
 
@@ -161,9 +122,9 @@ const Login_2StudRegistrationInfo = () => {
 
 
     return (
-        <div className=' '>
+        <div className=' bg-red-400'>
             <StaffLoginHeader />
-            
+
             {panelOpen && (
                 <div
                     ref={panelRef}
@@ -171,41 +132,73 @@ const Login_2StudRegistrationInfo = () => {
                     {message}
                 </div>
             )}
-            <div className='info-body'>
-                <form className='max-w-[700px]' onSubmit={(e) => {
-                    submitHandeler(e);
-                }}>
-                    <h2 className='text-red-500 text-xl'>Important Instructions for Students.</h2>
-                    <ul className='text-sm stud-login-ul'>
-                        <li> Please enter your mobile number and email id carefully.</li>
+            <div
+                className="info-body w-screen"
+                style={{
+                    padding: '16px',
+                    display: 'flex',
+                    justifyContent: 'start',
+                }}
+            >
+                <form
+                    onSubmit={(e) => submitHandeler(e)}
+                    style={{
+                        width: '100%',
+                        maxWidth: '700px',
+                        padding: '20px',
+                        backgroundColor: '#0000',
+                        borderRadius: '8px',
+                    }}
+                >
+                    <h2
+                        className="text-red-500 text-xl"
+                        style={{ marginBottom: '16px', fontWeight: '600' }}
+                    >
+                        Important Instructions for Students.
+                    </h2>
+
+                    <ul
+                        className="text-sm stud-login-ul"
+                        style={{
+                            marginBottom: '24px',
+                            paddingLeft: '20px',
+                            lineHeight: '1.6',
+                        }}
+                    >
+                        <li>Please enter your mobile number and email id carefully.</li>
                         <li>You will receive OTP on your mobile number and email id after filling this form to verify your details.</li>
-                        <li>
-                            You will receive OTP on your mobile number and email id after filling this form to verify your details.
+                        <li>OTP will expire in 30 minutes.</li>
+                        <li>If OTP expires, use "Forget ID" link on Login page to activate account.</li>
+                        <li>Check for OTP in inbox/spam folders.</li>
+                        <li>If you already registered and didn’t receive SMS/OTP, use "Forget ID".</li>
+                        <li className="text-blue-400">
+                            8. Special symbols like (#, !, $, &, *, .,) are not allowed in password.
                         </li>
-                        <li> OTP received on your mobile number and email id will get expired in 30 minutes.</li>
-                        <li> If you have received OTP & didn't use it within 30 minutes, use "Forget ID" link in Login Menu page to activate your account</li>
-                        <li> Please keep your mobile switched on and in network range to receive OTP quickly, please check for OTP email in your email's inbox and spam folders.</li>
-                        <li>
-                            If you have already tried registering and did not receive any SMS/OTP, you can recover your account using "Forget ID" link in login menu.
-                        </li>
-                        <li className='text-blue-400'>8. Special symbols such as (#, !, $, &, *, .,) are not allowed in password.</li>
-
-
                     </ul>
 
-                    <div className="form_container">
-                        <div className="form_control">
+                    <div
+                        className="form_container"
+                        style={{
+                            display: 'grid',
+                            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                            gap: '20px',
+                            marginBottom: '24px',
+                        }}
+                    >
+                        <div className="form_control" style={{ display: 'flex', flexDirection: 'column' }}>
                             <label htmlFor="name">Name</label>
                             <input
                                 type="text"
                                 name="name"
                                 id="name"
+                                placeholder="Enter Full Name (As per Marksheet)"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
-                                placeholder="Enter Full Name (As per Marksheet)"
+                                style={{ padding: '8px', marginTop: '6px' }}
                             />
                         </div>
-                        <div className="form_control">
+
+                        <div className="form_control" style={{ display: 'flex', flexDirection: 'column' }}>
                             <label htmlFor="email">Email ID</label>
                             <input
                                 type="email"
@@ -213,11 +206,12 @@ const Login_2StudRegistrationInfo = () => {
                                 id="email"
                                 placeholder="Enter Email"
                                 value={email}
-                                onChange={(e) => {
-                                    setEmail(e.target.value)
-                                }} />
+                                onChange={(e) => setEmail(e.target.value)}
+                                style={{ padding: '8px', marginTop: '6px' }}
+                            />
                         </div>
-                        <div className="form_control">
+
+                        <div className="form_control" style={{ display: 'flex', flexDirection: 'column' }}>
                             <label htmlFor="mobile">Mobile Number</label>
                             <input
                                 type="tel"
@@ -225,18 +219,24 @@ const Login_2StudRegistrationInfo = () => {
                                 id="mobile"
                                 placeholder="Enter Mobile Number"
                                 value={mobile}
-                                onChange={(e) => setMobile(e.target.value)} />
+                                onChange={(e) => setMobile(e.target.value)}
+                                style={{ padding: '8px', marginTop: '6px' }}
+                            />
                         </div>
-                        <div className="form_control">
+
+                        <div className="form_control" style={{ display: 'flex', flexDirection: 'column' }}>
                             <label htmlFor="birthdate">Birthdate</label>
                             <input
                                 type="date"
                                 name="birthdate"
                                 id="birthdate"
                                 value={birthdate}
-                                onChange={(e) => setBirthdate(e.target.value)} />
+                                onChange={(e) => setBirthdate(e.target.value)}
+                                style={{ padding: '8px', marginTop: '6px',width:'100%' }}
+                            />
                         </div>
-                        <div className="form_control">
+
+                        <div className="form_control" style={{ display: 'flex', flexDirection: 'column' }}>
                             <label htmlFor="password">Password</label>
                             <input
                                 type="password"
@@ -244,11 +244,12 @@ const Login_2StudRegistrationInfo = () => {
                                 id="password"
                                 placeholder="Enter Password"
                                 value={password}
-                                onChange={(e) => {
-                                    setPassword(e.target.value)
-                                }} />
+                                onChange={(e) => setPassword(e.target.value)}
+                                style={{ padding: '8px', marginTop: '6px' }}
+                            />
                         </div>
-                        <div className="form_control">
+
+                        <div className="form_control" style={{ display: 'flex', flexDirection: 'column' }}>
                             <label htmlFor="captcha">Captcha</label>
                             <input
                                 type="text"
@@ -256,17 +257,39 @@ const Login_2StudRegistrationInfo = () => {
                                 id="captcha"
                                 placeholder="Enter Captcha"
                                 value={captcha}
-                                onChange={(e) => setCaptcha(e.target.value)} />
+                                onChange={(e) => setCaptcha(e.target.value)}
+                                style={{ padding: '8px', marginTop: '6px' }}
+                            />
                         </div>
                     </div>
 
-                    <div className="button_container flex gap-5">
-                        <button type="submit" className='font-bold'  >Click to Register</button>
+                    <div
+                        className="button_container"
+                        style={{
+                            marginTop: '16px',
+                            display: 'flex',
+                            justifyContent: 'flex-start',
+                        }}
+                    >
+                        <button
+                            type="submit"
+                            className="font-bold"
+                            style={{
+                                padding: '10px 20px',
+                                backgroundColor: '#2563eb',
+                                color: '#fff',
+                                border: 'none',
+                                borderRadius: '6px',
+                                cursor: 'pointer',
+                            }}
+                        >
+                            Click to Register
+                        </button>
                     </div>
                 </form>
-
-
             </div>
+
+
             <LoginFooter />
         </div>
     );

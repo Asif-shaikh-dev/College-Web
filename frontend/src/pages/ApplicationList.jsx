@@ -20,7 +20,7 @@ const ApprovalList = () => {
     }, []);
     const fetchApprovals = async () => {
         try {
-            const response = await axios.get('https://college-web-backend-6opl.onrender.com/vriddhi/pending-approvals', { withCredentials: true });
+            const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/vriddhi/pending-approvals`, { withCredentials: true });
             setApprovals(Array.isArray(response.data) ? response.data : []);
             // setApprovals(response.data);
 
@@ -41,7 +41,7 @@ const ApprovalList = () => {
     const onApprove = async (studentId) => {
         try {
             // Make an API call to approve the student
-            await axios.post("https://college-web-backend-6opl.onrender.com/vriddhi/approveStudent", { studentId });
+            await axios.post(`${import.meta.env.VITE_BASE_URL}/vriddhi/approveStudent`, { studentId });
             // console.log("Approved student:", studentId);
 
             toast.success("Student Approved")
@@ -57,7 +57,7 @@ const ApprovalList = () => {
     const onReject = async (studentId) => {
         try {
             // Make an API call to reject the student
-            await axios.post("https://college-web-backend-6opl.onrender.com/vriddhi/rejectStudent", { studentId });
+            await axios.post(`${import.meta.env.VITE_BASE_URL}/vriddhi/rejectStudent`, { studentId });
             // console.log("Rejected student:", studentId);
             toast.success("Student Rejected!")
 

@@ -209,6 +209,8 @@ html{
     font: inherit;
     cursor: pointer;
 }
+
+
 /* @media (max-width :800px) {
     body{
         grid-template-columns: 1fr;

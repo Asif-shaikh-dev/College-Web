@@ -13,7 +13,7 @@ const StudentLoginHeader = () => {
         try {
             
             const {data} = await axios.post(`${import.meta.env.VITE_BASE_URL}/students/logout`,{},{withCredentials:true})
-            // console.log(data)
+            console.log(data)
             toast.success("Logged Out")
             localStorage.removeItem('StudentLogin')
             data.success && setIsLoggedIn(false);
@@ -35,13 +35,13 @@ const StudentLoginHeader = () => {
         <header>
             <div className='sheader w-full  bg-transparent text-white font-light flex justify-around text-sm'>
                 <div className='welcome-msg'>Welcome {student?.fullname || ""} ({student?.email || ""})</div>
-                <div className='support-id font-bold '>Student Support Email ID : studentsupport@vriddhisoftware.com</div>
+                <div className='support-id font-bold hidden md:block '>Student Support Email ID : studentsupport@vriddhisoftware.com</div>
                 <div className='logout-changepass '>
-                    <ul className='flex gap-3 tracking-wider'>
+                    <ul className='flex gap-3 tracking-wider justify-around '>
                         <li onClick={()=>{setSelectedMenu('home')}} className="cursor-pointer transition-colors duration-300 hover:text-red-400">
                             Profile
                         </li>
-                        <li onClick={handleLogout} className="cursor-pointer text-red-400 transition-colors duration-300 hover:text-red-500">
+                        <li onClick={handleLogout} className="cursor-pointer w-[60px] md:w-[60px]  text-red-400 transition-colors duration-300 hover:text-red-500">
                             Log Out
                         </li>
 

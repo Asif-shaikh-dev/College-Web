@@ -30,18 +30,26 @@ const Start = () => {
           delay: 0.3,
           stagger: 0.15, // Staggers each item by 0.15s
         },);
+     
   
         tl.from(".left-nav", {
           
           y: 30, // Adjusted for a smoother effect
           opacity: 0,
-          duration: 1,
+          duration: 0.5,
   
           delay: 0.6,
           stagger: 0.15, // Staggers each item by 0.15s
         }, "+-1");
   
-  
+        tl.from(".toggle-mobile-menu", {
+        
+          y: 20, // Adjusted for a smoother effect
+          opacity: 0,
+          duration: 0.5,
+          delay: 0.1,
+           // Staggers each item by 0.15s
+        },"+-0.5");
         tl.from(".right-nav", {
           
           y: 30, // Adjusted for a smoother effect
@@ -60,6 +68,7 @@ const Start = () => {
   
           stagger: 0.15, // Staggers each item by 0.15s
         }, "+-3");
+   
   
         tl.from(".menu-section", {
           duration: 0.3,
@@ -70,6 +79,7 @@ const Start = () => {
           stagger: 0.05, // Staggers each item by 0.15s
         },"-=3.5");
 
+    
         // Prevent animation from playing again in the same session
        
     })
