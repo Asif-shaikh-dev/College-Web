@@ -78,12 +78,10 @@ const StudentContext = ({ children }) => {
          getUserData()
        }else{
           console.log("Not logged in")
-        
-
       }
       
     } catch (error) {
-      console.error("Error in getting auth state:", error.errors.msg);
+      console.error("Error in getting auth state:", error);
        toast.error(error.message)
      }
    }
@@ -101,7 +99,45 @@ const StudentContext = ({ children }) => {
         Cookies.remove('token');
         localStorage.removeItem('token'); // Remove token
         localStorage.removeItem("student");
-        setStudent(null); // Reset student state
+        setStudent({
+          studentId: "",
+          fullname: "",
+          email: "",
+          mobile: "",
+          birthdate: "",
+          totalFee: 0,
+          feesPaid: 0,
+          feesRemaining: 0,
+          admissionType: "",
+          admissionFee: 0,
+          admissionFeePaid: false,
+          fullName: "",
+          dob: "",
+          gender: "",
+          mobile2: "",
+          fatherName: "",
+          motherName: "",
+          parentContact: "",
+          currAddress: "",
+          tenthBoard: "",
+          tenthYear: "",
+          tenthPercentage: "",
+          collegeName: "",
+          stream: "",
+          twelfthPercentage: "",
+          courseSelection: "",
+          documents: {
+              tenthMarksheet: null,
+              twelfthMarksheet: null,
+              lc: null,
+              casteCertificate: null,
+              incomeCertificate: null,
+              domicile: null,
+              passportPhoto: null,
+              adharCard: null,
+          }
+      });
+       // Reset student state
     };
     return (
 

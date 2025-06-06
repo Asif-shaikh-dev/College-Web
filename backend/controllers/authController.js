@@ -147,13 +147,10 @@ module.exports.logoutStudent = async (req, res, next) => {
     try {
         res.cookie('token', '', {
             httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
-            expires: new Date(0), // or maxAge: 0
-            path: '/',
-          });
-    
-          
+            secure:true,
+            sameSite: "none",
+        
+        })
         await blacklistTokenModel.create({ token })
         return res.json({ success: true, message: "Logged Out" })
     } catch (error) {
