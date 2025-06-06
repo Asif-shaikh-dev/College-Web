@@ -18,6 +18,7 @@ module.exports.authStudent = async (req,res,next) =>{
 // console.log(process.env.JWT_SECRET)
 
     if(isBlacklisted){
+        console.error("Unauthorized blacklisted token detected:");
         return res.status(401).json({errors:[{msg:"Unauthorized blackisted"}]})
     }
 
@@ -37,7 +38,7 @@ module.exports.authStudent = async (req,res,next) =>{
         next(); // Move to the next middleware or route handler
 
     } catch (error) {
-        // console.log(error)
+        console.log("Error in authMiddleware",error)
         return res.status(401).json({ success:false, messege:error.messege });
     }
 
@@ -54,7 +55,7 @@ module.exports.authOwner = async (req,res,next) => {
     try {
         // Verify JWT token
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        
+        console.log("Decoded Owner Token:", decoded);
         if(decoded.userId){
             req.body.userId = decoded.userId;
         }else{

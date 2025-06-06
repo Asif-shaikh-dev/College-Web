@@ -1,4 +1,6 @@
 @import "tailwindcss";
+
+
 :root {
     --primary-color: #4F46E5;
     --secondary-color: #818CF8;
@@ -6,10 +8,14 @@
     --background-color: #F9FAFB;
   }
   
-  body{
-    overflow-x: hidden;
-    /* overflow: auto; */
-  }
+/* index.css */
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+}
+
 /* Use --primary-color for main elements like headers and buttons 
 header {
   background-color: var(--primary-color);

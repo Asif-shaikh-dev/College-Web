@@ -5,7 +5,7 @@ const blacklistTokenModel = require('../models/blackListToken.models')
 
 const bcrypt = require('bcryptjs')
 
-const {transporter} = require('../db/nodemailer')
+const { transporter } = require('../db/nodemailer')
 
 
 async function generateUniqueUserId() {
@@ -111,13 +111,16 @@ module.exports.loginStudent = async (req, res, next) => {
     }
 
     const token = student.generateAuthToken();
-
+    // console.log('token', token)
     res.cookie('token', token, {
         httpOnly: true,
-        secure:true,
-        sameSite: "none",
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
         maxAge: 24 * 60 * 60 * 1000,
-    })
+        path: '/', // Make sure path is explicitly set
+
+    });
+
 
     res.status(201).json({ messege: 'Login Successfull', token, student })
 }
@@ -128,23 +131,26 @@ module.exports.getStudentProfile = async (req, res, next) => {
     try {
         return res.status(200).json({ success: true })
     } catch (error) {
+        console.log("Error in getStudentProfile:", error.message)
         res.json({ success: false, message: error.message })
     }
 }
 
 module.exports.logoutStudent = async (req, res, next) => {
     const token = req.cookies.token; // Get token from cookies
-        
+    console.log('request cookies', req.cookies)
+    console.log('token from logout', token)
+
     if (!token) {
         return res.status(400).json({ success: false, message: "Token not found" });
     }
     try {
         res.clearCookie('token', {
             httpOnly: true,
-            secure:true,
-            sameSite: "none",
-        
-        })
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+            path: '/', // Important! This must match the path in res.cookie
+          });
         await blacklistTokenModel.create({ token })
         return res.json({ success: true, message: "Logged Out" })
     } catch (error) {
@@ -181,7 +187,7 @@ module.exports.sendVerifyOtp = async (req, res) => {
             to: student.email,
             subject: 'Account Verification OTP',
             // text: `Your otp is : ${otp}`
-            html:EMAIL_VERIFY_TEMPLATE.replace("{{otp}}",otp).replace("{{email}}",student.email)
+            html: EMAIL_VERIFY_TEMPLATE.replace("{{otp}}", otp).replace("{{email}}", student.email)
 
         }
         await transporter.sendMail(mailOption)
@@ -209,7 +215,7 @@ module.exports.verifyEmail = async (req, res) => {
         }
 
         if (student.verifyOtp === '' || student.verifyOtp !== otp) {
-           return res.json({ success: false, message: "Invalid Otp" })
+            return res.json({ success: false, message: "Invalid Otp" })
         }
 
         if (student.verifyOtpExpireAt < Date.now()) {
@@ -251,7 +257,7 @@ module.exports.sendResetOtp = async (req, res) => {
         student.resetOtp = otp;
         student.resetOtpExpireAt = Date.now() + 15 * 60 * 1000;
 
-        req.session.resetEmail = email; 
+        req.session.resetEmail = email;
         await student.save()
 
         const mailOption = {
@@ -259,7 +265,7 @@ module.exports.sendResetOtp = async (req, res) => {
             to: student.email,
             subject: 'Password Reset OTP',
             // text: `Your OTP for Resetting Password Is: ${otp}`
-            html:`
+            html: `
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -372,63 +378,63 @@ module.exports.sendResetOtp = async (req, res) => {
         }
         await transporter.sendMail(mailOption)
 
-        return res.json({success:true,message:"OTP Sent to your mail"})
+        return res.json({ success: true, message: "OTP Sent to your mail" })
 
 
     } catch (error) {
         res.json({ success: false, message: error.message })
     }
-    
-    
-    
+
+
+
 }
 
 
 //reset user password
-module.exports.resetPassword = async (req,res)=>{
-    const {email,otp,newPassword} = req.body;
-    
-    if(!email || !otp || !newPassword){
-        return res.json({success:false,message:"Email,otp,new password required"})
+module.exports.resetPassword = async (req, res) => {
+    const { email, otp, newPassword } = req.body;
+
+    if (!email || !otp || !newPassword) {
+        return res.json({ success: false, message: "Email,otp,new password required" })
     }
     if (!req.session.resetEmail || req.session.resetEmail !== email) {
         return res.status(403).json({ success: false, message: "Unauthorized request" });
     }
 
     try {
-        const student = await studentModel.findOne({email})
-        if(!student){
-           return res.json({success:false,message:'user not found'})
+        const student = await studentModel.findOne({ email })
+        if (!student) {
+            return res.json({ success: false, message: 'user not found' })
         }
 
-        if(student.resetOtp==="" ||student.resetOtp !== otp){
-            return res.json({success:false,message:"Invalid OTP"})
+        if (student.resetOtp === "" || student.resetOtp !== otp) {
+            return res.json({ success: false, message: "Invalid OTP" })
         }
 
-        if(student.resetOtpExpireAt < Date.now()){
-            return res.json({success:false,message:"OTP Expired"})
+        if (student.resetOtpExpireAt < Date.now()) {
+            return res.json({ success: false, message: "OTP Expired" })
         }
-        
-        const hashedPassword =await bcrypt.hash(newPassword,10)
-        
+
+        const hashedPassword = await bcrypt.hash(newPassword, 10)
+
         student.password = String(hashedPassword);
-        student.resetOtp=''
-        student.resetOtpExpireAt=0;
-        
+        student.resetOtp = ''
+        student.resetOtpExpireAt = 0;
+
         await student.save()
-        req.session.destroy(); 
-        
-        
-        return res.json({success:true,message:"Password Has been Changed"})
-        
+        req.session.destroy();
+
+
+        return res.json({ success: true, message: "Password Has been Changed" })
+
     } catch (error) {
         res.json({ success: false, message: error.message })
-        
+
     }
 
 }
 
-module.exports.updatePayement =  async (req, res) => {
+module.exports.updatePayement = async (req, res) => {
     try {
         const { studentId, amountPaid } = req.body;
 

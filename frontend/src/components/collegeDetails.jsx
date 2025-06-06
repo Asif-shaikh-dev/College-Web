@@ -3,27 +3,26 @@ import React, { useLayoutEffect } from 'react'
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
-
-
-
-
-
-import '../CssComponents/collegeDetails.css'
-// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, EffectFade } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/effect-fade';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import 'swiper/css/effect-fade';
+import '../CssComponents/collegeDetails.css'
+
+// Import Swiper React components
 
 
-import { useRef, useEffect } from 'react';
 
 
-import { Autoplay, EffectFade } from 'swiper/modules';
 
-import { Pagination, Navigation } from 'swiper/modules'; // Import required modules
-// Import Swiper styles
-import 'swiper/css';
+
+
+
+
+
+
 
 
 const CollegeDetails = () => {
@@ -62,72 +61,79 @@ const CollegeDetails = () => {
 
 
     return (
-        <div className='text-white flex justify-start gap-5  items-center h-[100vh] w-full '>
-            <div className='left-list w-[30%]'>
-                <ul>
-                    <li>IMPoratnt links</li>
-                    <li>alumni</li>
-                    <li>infrastructure</li>
-                    <li>library</li>
-                    <li>policies</li>
-                    <li>placement</li>
-                    <li>nss</li>
-                    <li>ncc</li>
-                    <li>sports</li>
-                    <li>i & e start-up cell</li>
-                    <li>Complaint from student</li>
-                </ul>
-            </div>
-            <div className='img-con w-[70%] h-[85%]  bg-red-400'>
-                <div className='slider-container h-[100%] w-[100%] bg-amber-950'>
-                    <Swiper
-                        spaceBetween={0}
-                        slidesPerView={1}
-                        effect="fade"  // Enables fade animation
-                        autoplay={{ delay: 3000, disableOnInteraction: false }} // Auto-slide every 3 sec
-                        loop={true} // Infinite loop
-                        modules={[Autoplay, EffectFade]}
-                        className="swiper-wrapper"
-                    >
-
-                        <div className='swiper-wrapper h-[100%] w-[100%]  '>
-
-                            <SwiperSlide>
-                                <div className='slider-content h-[150%] w-[100%] bg-red-900 '>
-                                    <img className='w-[100%] object-cover' src="https://www.abedainamdarcollege.org.in/assets/images/chem.jpg" alt="phoo" />
-                                </div>
-                            </SwiperSlide>
-
-
-                            <SwiperSlide>
-
-                                <div className='slider-content h-full overflow-hidden w-full bg-amber-700'>
-                                    <img className='h-[100%] w-[100%] block  object-cover' src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgNSE4rznvKdQjGl7_NAnRaJo4hcL2yBH01zPGjnhu3VSLzOjY4uL2NgmlZm8U_zta4JPLZyA0iFuAcgidEyVyV5Vz9b_E8FPYKRp0HHUCJrHnJ_2VUcfdPG_Gz0oA12Z51QlTQWVymLMZq/s1600/2.+PG+building.jpg" alt="phoo" />
-                                </div>
-                            </SwiperSlide>
-
-
-                            <SwiperSlide>
-
-                                <div className='slider-content h-[100%] w-[100%] bg-amber-700'>
-                                    <img className='h-[100%] w-[100%] object-cover' src="https://media.getmyuni.com/azure/college-images-test/abeda-inamdar-senior-college-for-girls-pune/d31924bff7f740feae537d8ee9c1f76d.jpeg
-                                        " alt="phoo" />
-                                </div>
-                            </SwiperSlide>
-
-                            <SwiperSlide>
-
-                                <div className='slider-content h-[100%] w-[100%] bg-amber-700'>
-                                    <img className='h-[100%] w-[100%] object-cover' src="https://www.admissionwala.in/storage/productimages/1.jpg" alt="phoo" />
-                                </div>
-                            </SwiperSlide>
-
-
-                        </div>
-                    </Swiper>
-                </div>
-            </div>
+        <div className=" text-white flex flex-col md:flex-row items-start md:items-center h-auto md:h-screen w-full  p-4 gap-4 bg-black">
+        {/* Left Links */}
+        <div className="left-list w-full  md:w-[30%] ">
+          <ul className="space-y-2 text-sm md:text-base">
+            <li>Important Links</li>
+            <li>Alumni</li>
+            <li>Infrastructure</li>
+            <li>Library</li>
+            <li>Policies</li>
+            <li>Placement</li>
+            <li>NSS</li>
+            <li>NCC</li>
+            <li>Sports</li>
+            <li>I & E Start-up Cell</li>
+            <li>Complaint from Student</li>
+          </ul>
         </div>
+  
+        {/* Right Image Carousel */}
+        <div className="img-con  md:w-[70%]  h-[300px] md:h-[85%]  rounded-md overflow-hidden ">
+          <div className="slider-container h-full  w-full bg-amber-700">
+            <Swiper
+              spaceBetween={0}
+              slidesPerView={1}
+              effect="fade"
+              autoplay={{ delay: 3000, disableOnInteraction: false }}
+              loop={true}
+              modules={[Autoplay, EffectFade]}
+              className="h-full"
+            >
+              <SwiperSlide>
+                <div className="slider-content h-full w-full bg-red-700">
+                  <img
+                    className="w-full h-full object-cover"
+                    src="https://www.abedainamdarcollege.org.in/assets/images/chem.jpg"
+                    alt="chem"
+                  />
+                </div>
+              </SwiperSlide>
+  
+              <SwiperSlide>
+                <div className="slider-content h-full w-full bg-amber-700">
+                  <img
+                    className="w-full h-full object-cover"
+                    src="https://www.abedainamdarcollege.org.in/assets/images/slide-1.jpg"
+                    alt="pg-building"
+                  />
+                </div>
+              </SwiperSlide>
+  
+              <SwiperSlide>
+                <div className="slider-content h-full  w-full bg-amber-700">
+                  <img
+                    className="w-full h-full object-cover"
+                    src="https://media.getmyuni.com/azure/college-images-test/abeda-inamdar-senior-college-for-girls-pune/d31924bff7f740feae537d8ee9c1f76d.jpeg"
+                    alt="college"
+                  />
+                </div>
+              </SwiperSlide>
+  
+              <SwiperSlide>
+                <div className="slider-content h-full w-full bg-amber-700">
+                  <img
+                    className="w-full h-full object-cover"
+                    src="https://www.admissionwala.in/storage/productimages/1.jpg"
+                    alt="campus"
+                  />
+                </div>
+              </SwiperSlide>
+            </Swiper>
+          </div>
+        </div>
+      </div>
     );
 };
 

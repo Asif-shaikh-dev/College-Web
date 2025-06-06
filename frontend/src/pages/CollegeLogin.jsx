@@ -23,7 +23,7 @@ const CollegeLogin = () => {
             }
 
             const response = await axios.post(
-                `${import.meta.env.VITE_BACKEND_URL}/vriddhi/login`,
+                `${import.meta.env.VITE_BASE_URL}/vriddhi/login`,
                 loginDdata,
                 {
                     withCredentials: true, // Include cookies

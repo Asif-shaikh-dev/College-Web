@@ -62,32 +62,66 @@ const AdmissionEnquiry = () => {
 
 
   return (
-    <div className='Addmission-Enquiry flex items-center justify-around h-[100vh] w-full'>
-      <div className='table-div h-[80%] w-[500px]  '>
-        <h1 className='font-medium text-base text-white '>FOR ADMISSION ENQUIRY CONTACT(10:00 AM TO 05.00 PM)</h1>
-        <div className='whole-table'>
-          <TableSwitcher />
-        </div>
-      </div>
-
-      <div className='enquiry-form h-[80%] w-[50%] '>
-        <h1 className='font-medium text-lg text-white text-center'>Enquiry Form</h1>
-        <form action="" onSubmit={(e)=>submitHandeler(e)} className='h-[100%] w-[100%] flex flex-col justify-evenly '>
-          <input className='name w-[100%] h-12 bg-transparent border-1 text-sm text-white' type="text" placeholder='Enter Your Name' />
-          <input className='name w-[100%] h-12 bg-transparent border-1 text-sm text-white' type="email" placeholder='Enter Your Email' />
-          <input className='name w-[100%] h-12 bg-transparent border-1 text-sm text-white' type="number" placeholder='Enter your Mobile No.' />
-          <select className='name w-[100%] h-12 focus:bg-black border-1 text-sm bg-black text-white' name="" id="">
-            <option value="" defaultValue className='bg-black text-white'>Select Subject</option>
-            <option value="" className='bg-black text-white'>Hindi</option>
-            <option value="" className='bg-black text-white'>English</option>
-            <option value="" className='bg-black text-white'>Marathi</option>
-            <option value="" className='bg-black text-white'>Bangoli</option>
-          </select>
-          <textarea name="" id="" placeholder='Enter Isuues/Query' className='name w-[100%] h-25 bg-transparent text-white border-1 text-sm '></textarea>
-          <button type='submit'  className='text-[1rem] cursor-pointer h-8 w-15 text-white font-medium bg-green-500 self-center rounded'>Submit</button>
-        </form>
+    <div style={{padding:'20px'}} className="Addmission-Enquiry flex flex-col lg:flex-row items-center justify-around h-auto min-h-screen w-full bg-[#000] px-5 py-10 space-y-10 lg:space-y-0">
+  
+    {/* Contact Info Section */}
+    <div className="table-div w-full flex flex-col  lg:w-[500px] h-auto">
+      <h1 className="font-medium text-sm w-full  md:text-base text-white text-center mb-4">
+        FOR ADMISSION ENQUIRY CONTACT<br/> (10:00 AM TO 05.00 PM)
+      </h1>
+      <div className="whole-table">
+        <TableSwitcher />
       </div>
     </div>
+  
+    {/* Enquiry Form Section */}
+    <div className="enquiry-form w-full lg:w-[50%] h-auto">
+      <h1 className="font-medium text-lg text-white text-center mb-6">Enquiry Form</h1>
+      
+      <form
+        onSubmit={(e) => submitHandeler(e)}
+        className="w-full flex flex-col space-y-4"
+      >
+        <input
+          className="h-12 px-3 bg-transparent border border-white rounded text-sm text-white placeholder-white focus:outline-none"
+          type="text"
+          placeholder="Enter Your Name"
+        />
+        <input
+          className="h-12 px-3 bg-transparent border border-white rounded text-sm text-white placeholder-white focus:outline-none"
+          type="email"
+          placeholder="Enter Your Email"
+        />
+        <input
+          className="h-12 px-3 bg-transparent border border-white rounded text-sm text-white placeholder-white focus:outline-none"
+          type="number"
+          placeholder="Enter your Mobile No."
+        />
+        <select
+          className="h-12 px-3 border border-white bg-black text-white text-sm rounded focus:outline-none"
+          defaultValue=""
+        >
+          <option value="" disabled>Select Subject</option>
+          <option>Hindi</option>
+          <option>English</option>
+          <option>Marathi</option>
+          <option>Bangoli</option>
+        </select>
+        <textarea
+          placeholder="Enter Issues/Query"
+          className="h-24 px-3 py-2 bg-transparent border border-white rounded text-sm text-white placeholder-white focus:outline-none resize-none"
+        ></textarea>
+        <button
+        style={{paddingRight:'10px',paddingLeft:'10px',marginTop:'10px'}} 
+          type="submit"
+          className="h-10 px-6 text-white font-medium bg-green-500 hover:bg-green-600 rounded self-center"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+  
   );
 };
 

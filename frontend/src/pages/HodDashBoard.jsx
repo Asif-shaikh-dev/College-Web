@@ -11,7 +11,7 @@ const PendingTeachers = () => {
   const fetchPendingTeachers = async () => {
 
     try {
-      const res = await axios.get(`https://college-web-backend-6opl.onrender.com/hod/pending-teachers/${department}`);
+      const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/hod/pending-teachers/${department}`);
       setPendingTeachers(res.data);
       console.log(res.data)
     } catch (error) {
@@ -35,7 +35,7 @@ const PendingTeachers = () => {
 
   const approveTeacher = async (teacherId) => {
     try {
-      await axios.post("https://college-web-backend-6opl.onrender.com/hod/approve-teacher", { teacherId });
+      await axios.post(`${import.meta.env.VITE_BASE_URL}/hod/approve-teacher`, { teacherId });
       setPendingTeachers((prev) => prev.filter((t) => t._id !== teacherId));
       toast.success("Teacher approved successfully");
     } catch (error) {

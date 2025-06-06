@@ -30,39 +30,60 @@ const TableSwitcher = () => {
   const tableData = category === "undergraduate" ? undergraduateData : postgraduateData;
 
   return (
-    <div className="container">
-      <div className="button-group">
-            <button onClick={() => setCategory("undergraduate")} className={category === "undergraduate" ? "active" : ""}>
-            UNDERGRADUATE
-            </button>
-            <button onClick={() => setCategory("postgraduate")} className={category === "postgraduate" ? "active" : ""}>
-            POST GRADUATE
-            </button>
-      </div>
-
-      <div className="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th>Sr. No.</th>
-              <th>Course</th>
-              <th>Name of Staff</th>
-              <th>Mobile</th>
-            </tr>
-          </thead>
-          <tbody>
-            {tableData.map((row, index) => (
-              <tr key={row.id} className={index % 2 === 0 ? "even-row" : "odd-row"}>
-                <td>{row.id}</td>
-                <td>{row.course}</td>
-                <td>{row.name}</td>
-                <td>{row.mobile}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+    <div className="w-full">
+    {/* Button Group */}
+    <div
+      className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-4"
+      style={{ padding: '1rem' }}
+    >
+      <button
+        onClick={() => setCategory("undergraduate")}
+        className={`rounded text-white font-medium ${
+          category === "undergraduate" ? "bg-blue-600" : "bg-gray-500"
+        } hover:bg-blue-700 transition`}
+        style={{ padding: '0.5rem 1.5rem' }}
+      >
+        UNDERGRADUATE
+      </button>
+      <button
+        onClick={() => setCategory("postgraduate")}
+        className={`rounded text-white font-medium ${
+          category === "postgraduate" ? "bg-blue-600" : "bg-gray-500"
+        } hover:bg-blue-700 transition`}
+        style={{ padding: '0.5rem 1.5rem' }}
+      >
+        POST GRADUATE
+      </button>
     </div>
+  
+    {/* Table */}
+    <div className="overflow-x-auto" style={{ padding: '0 4rem' }}>
+      <table className="min-w-full border border-gray-500 text-white text-sm">
+        <thead className="bg-blue-900 text-white">
+          <tr>
+            <th className="border px-4 py-2">Sr. No.</th>
+            <th className="border px-4 py-2">Course</th>
+            <th className="border px-4 py-2">Name of Staff</th>
+            <th className="border px-4 py-2">Mobile</th>
+          </tr>
+        </thead>
+        <tbody>
+          {tableData.map((row, index) => (
+            <tr
+              key={row.id}
+              className={index % 2 === 0 ? "bg-gray-800" : "bg-gray-700"}
+            >
+              <td className="border px-4 py-2">{row.id}</td>
+              <td className="border px-4 py-2">{row.course}</td>
+              <td className="border px-4 py-2">{row.name}</td>
+              <td className="border px-4 py-2">{row.mobile}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
   );
 };
 

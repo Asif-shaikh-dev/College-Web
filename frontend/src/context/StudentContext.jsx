@@ -13,7 +13,7 @@ const StudentContext = ({ children }) => {
       const [selectedMenu, setSelectedMenu] = useState("home");
   
     const [isAuthenticated,setIsAuthenticated] = useState(false)
-    const backendUrl = import.meta.env.VITE_BACKEND_URL
+    const backendUrl = import.meta.env.VITE_BASE_URL;
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [changePassDiv, setChangePassDiv] = useState(false);
     const [student, setStudent] = useState({
@@ -65,7 +65,7 @@ const StudentContext = ({ children }) => {
        data.success ? setStudent(data.studentData) : toast.error(data.message)
  
      } catch (error) {
-      navigate('/')
+        navigate('/')
        toast.error(error.message || "Something went wrong in getting User Data")
      }
    }
@@ -83,6 +83,7 @@ const StudentContext = ({ children }) => {
       }
       
     } catch (error) {
+      console.error("Error in getting auth state:", error);
        toast.error(error.message)
      }
    }
