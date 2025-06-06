@@ -21,6 +21,7 @@ const Login3StudLogin = () => {
 
     const submitHandeler = async (e) => {
         e.preventDefault(); // Prevents page reload
+        setIsLogging(true)
 
         try {
             const studentData = {
@@ -44,7 +45,6 @@ const Login3StudLogin = () => {
                     withCredentials: true, // Include cookies
                 }
             );
-            setIsLogging(true)
 
             // console.log(response.status)
 
