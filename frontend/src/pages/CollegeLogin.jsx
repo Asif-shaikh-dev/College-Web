@@ -17,6 +17,8 @@ const CollegeLogin = () => {
                 password: password,
             };
 
+            console.log("Login Data:", loginDdata); // Log the data being sent
+
             if (!loginDdata.email || !loginDdata.password) {
                 toast.error("All fields are required!")
                 return; // Stop execution if validation fails
@@ -29,9 +31,9 @@ const CollegeLogin = () => {
                     withCredentials: true, // Include cookies
                 }
             );
-            // console.log(response)
+            console.log(response)
             const data = response.data;
-            // console.log(data)
+            console.log(data)
 
             if (response.status == 201) {
 
@@ -48,7 +50,7 @@ const CollegeLogin = () => {
             }
 
         } catch (error) {
-
+            console.error("Login Error:", error); // Log the error for debugging
             if (error.response) {
 
                 toast.error(error.response.data.message || "Login failed!");
