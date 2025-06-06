@@ -48,7 +48,7 @@ const Login3StudLogin = () => {
 
             console.log("Request URL:", `${import.meta.env.VITE_BASE_URL}/students/Login_8StudRegistrationInfoConfirmContinue`);
 
-
+            
             if (response.status === 201) {
                 Cookies.set("authToken", "student_logged_in", { expires: 1 });
                 const data = response.data;
@@ -74,6 +74,7 @@ const Login3StudLogin = () => {
                 toast.error(err.response.data.errors[0].msg)
                 // setMessage(err.response.data.errors[0].msg); // Display backend error
             } else {
+                console.log(err.response || "Something went wrong!"); // Log error message
                 toast.error("Something went wrong. Please try again");
             }
             // setColor('bg-red-800')

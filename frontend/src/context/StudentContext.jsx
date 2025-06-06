@@ -83,7 +83,7 @@ const StudentContext = ({ children }) => {
       }
       
     } catch (error) {
-      console.error("Error in getting auth state:", error);
+      console.error("Error in getting auth state:", error.errors.msg);
        toast.error(error.message)
      }
    }

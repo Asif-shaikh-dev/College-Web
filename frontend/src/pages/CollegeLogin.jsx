@@ -16,7 +16,7 @@ const CollegeLogin = () => {
                 email: email,
                 password: password,
             };
-            
+
             if (!loginDdata.email || !loginDdata.password) {
                 toast.error("All fields are required!")
                 return; // Stop execution if validation fails
@@ -34,7 +34,7 @@ const CollegeLogin = () => {
             // console.log(data)
 
             if (response.status == 201) {
-                
+
                 if (data.role === 'Owner') {
                     toast.success("Login Confirmed!")
                     localStorage.setItem("OwnertryToAccess", "true");
@@ -48,11 +48,9 @@ const CollegeLogin = () => {
             }
 
         } catch (error) {
-            // toast.error(error.response.data.message)
-            // console.error("Login Error:", error);
+
             if (error.response) {
-                // console.error("Response Data:", error.response.data);
-                // console.error("Response Status:", error.response.status);
+
                 toast.error(error.response.data.message || "Login failed!");
             } else if (error.request) {
                 // console.error("Request Made But No Response:", error.request);
@@ -65,22 +63,52 @@ const CollegeLogin = () => {
     }
 
     return (
-        <div className='flex items-center justify-center bg-black h-screen w-screen'>
-
-            <form onSubmit={(e) => submitHandeler(e)} action="" className='h-[70%] w-[80%] flex flex-col items-center justify-evenly border border-gray-400'>
-                <div className='w-full  bg-transparent flex items-center justify-center'>
-                    <h1 className='text-4xl bg-gradient-to-br from-[#818CF8] to-purple-400 text-transparent bg-clip-text font-medium'>Abeda Inamdar Senior College <span className='text-yellow-200'>Vriddhi Login</span> </h1>
+        <div
+            className="flex items-center justify-center bg-black h-screen w-screen"
+            style={{ padding: "16px" }}
+        >
+            <form
+                onSubmit={(e) => submitHandeler(e)}
+                action=""
+                className="h-[70%] w-[100%] md:w-[80%] flex flex-col items-center justify-evenly border border-gray-400"
+                style={{ padding: "20px", margin: "auto" }}
+            >
+                <div className="w-full bg-transparent flex items-center justify-center" style={{ marginBottom: "16px" }}>
+                    <h1 className="text-4xl  text-center md:text-left bg-gradient-to-br from-[#818CF8] to-purple-400 text-transparent bg-clip-text font-medium">
+                        Abeda Inamdar Senior College <span className="text-yellow-200 ">Vriddhi Login</span>
+                    </h1>
                 </div>
 
-                <div className='w-full  bg-transparent  flex flex-col gap-3 items-center justify-evenly'>
-                    <input onChange={(e) => setEmail(e.target.value)} type="email" placeholder='Email' className='h-20 w-[80%] bg-transparent' />
-                    <input onChange={(e) => { setPassword(e.target.value) }} type="password" placeholder='Password' className='h-20 w-[80%] bg-transparent' />
+                <div
+                    className="w-full bg-transparent flex flex-col gap-3 items-center justify-evenly"
+                    style={{ padding: "10px", marginBottom: "16px" }}
+                >
+                    <input
+                        onChange={(e) => setEmail(e.target.value)}
+                        type="email"
+                        placeholder="Email"
+                        className="h-20 w-[100%] md:w-[80%] bg-transparent"
+                        style={{ padding: "0 12px", margin: "4px 0" }}
+                    />
+                    <input
+                        onChange={(e) => setPassword(e.target.value)}
+                        type="password"
+                        placeholder="Password"
+                        className="h-20 w-[100%] md:w-[80%] bg-transparent"
+                        style={{ padding: "0 12px", margin: "4px 0" }}
+                    />
                 </div>
-                <button className='text-blue-500 bg-white rounded-full w-20 h-10 cursor-pointer '>Login</button>
 
+                <button
+                    className="text-blue-500 bg-white rounded-full w-20 h-10 cursor-pointer"
+                    style={{ marginTop: "12px", padding: "4px 8px" }}
+                >
+                    Login
+                </button>
             </form>
-
         </div>
+
+
     )
 }
 
