@@ -14,6 +14,7 @@ const Login3StudLogin = () => {
     const [password, setPassword] = useState('')
     const navigate = useNavigate();
     const [color, setColor] = useState('bg-green-600')
+    const [isLogging, setIsLogging] = useState(false);
 
 
     const { student, setStudent, setIsLoggedIn } = useContext(StudentDataContext);
@@ -43,6 +44,7 @@ const Login3StudLogin = () => {
                     withCredentials: true, // Include cookies
                 }
             );
+            setIsLogging(true)
 
             // console.log(response.status)
 
@@ -55,6 +57,7 @@ const Login3StudLogin = () => {
                 toast.success("Logged In")
                 setStudent(data.student);
                 setIsLoggedIn(true)
+                setIsLogging(false)
                 localStorage.setItem("StudentLogin","true")
                 // localStorage.setItem('student', JSON.stringify(data.student));
 
@@ -87,32 +90,7 @@ const Login3StudLogin = () => {
 
 
     };
-
-    // const [panelOpen, setPanelOpen] = useState(false);
-    // const panelRef = useRef(null);
-    // const [message, setMessage] = useState("Registration Successful");
-
-
-
-    // useEffect(() => {
-    //     if (panelOpen) {
-    //         gsap.fromTo(
-    //             panelRef.current,
-    //             { x: "100%", opacity: 0 },
-    //             { x: "0%", opacity: 1, duration: 0.5, ease: "power2.out" }
-    //         );
-    //     } else {
-    //         gsap.to(panelRef.current, {
-    //             x: "100%",
-    //             opacity: 0,
-    //             duration: 0.5,
-    //             ease: "power2.in",
-    //         });
-    //     }
-    // }, [panelOpen]);
-
     const empty = () => {
-
         setPassword('')
         setEmail('')
     }
@@ -120,13 +98,7 @@ const Login3StudLogin = () => {
         <div>
             <StaffLoginHeader />
 
-            {/* {panelOpen && (
-                <div
-                    ref={panelRef}
-                    className={`fixed  registration-success-panel top-5 right-5 ${color} text-white font-sans rounded shadow-lg transition-opacity duration-500`} >
-                    {message}
-                </div>
-            )} */}
+       
             <div className='Staff-Login-portal flex flex-col gap-5'>
                 <h1 className='text-2xl text-blue-500'>Student Login</h1>
                 <form className='max-w-[650px]' onSubmit={(e) => { submitHandeler(e) }}>
@@ -147,7 +119,7 @@ const Login3StudLogin = () => {
                         </div>
                     </div>
                     <div className="button_container flex gap-5">
-                        <button className='font-bold' type='submit'>Click to Login</button>
+                        <button className='font-bold' type='submit'>{isLogging ? "Logging..." : "Click to Login"}</button>
                         <button type='reset' className='font-bold' onClick={() => { empty() }}>Click to Reset</button>
                     </div>
                 </form>
