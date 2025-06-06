@@ -1,9 +1,12 @@
 const dotenv = require('dotenv')
 dotenv.config();
+const path = require('path')
 
 const  express = require('express')
 const app = express()
 const cookieParser = require('cookie-parser')
+
+app.use(express.static(path.join(__dirname, '../frontend/build')));
 
 const cors =require('cors')
 const connectDb = require('./db/db')
@@ -13,7 +16,6 @@ const hodRoutes = require('./routes/hodRoutes')
 const teacherRoutes = require('./routes/teacher.routes')
 // const captainRoutes= require('./routes/captain.routes')
 
-const path = require('path');
 
 connectDb()
 app.set("trust proxy", 1);
@@ -41,6 +43,11 @@ app.use('/students',studentRoutes)
 app.use('/vriddhi',vridhhiRoutes)
 app.use('/hod',hodRoutes)
 app.use('/teacher',teacherRoutes)
+
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
+  });
 
 // app.use('/captains',captainRoutes)
 module.exports=app;
