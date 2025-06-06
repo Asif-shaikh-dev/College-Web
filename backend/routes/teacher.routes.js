@@ -102,7 +102,7 @@ router.get("/students", teacherMiddleware, async (req, res) => {
       return res.status(400).json({ message: "Invalid Teacher ID" });
     }
     const teacher = await Teacher.findById(teacherId);
-    // console.log("Id",teacherId)   
+    console.log("Id",teacherId)   
 
     // Debugging log
 

@@ -138,8 +138,8 @@ module.exports.getStudentProfile = async (req, res, next) => {
 
 module.exports.logoutStudent = async (req, res, next) => {
     const token = req.cookies.token; // Get token from cookies
-    console.log('request cookies', req.cookies)
-    console.log('token from logout', token)
+    // console.log('request cookies', req.cookies)
+    // console.log('token from logout', token)
 
     if (!token) {
         return res.status(400).json({ success: false, message: "Token not found" });

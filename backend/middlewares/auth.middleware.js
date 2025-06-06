@@ -8,7 +8,7 @@ const blacklistTokenModel = require('../models/blackListToken.models');
 
 module.exports.authStudent = async (req,res,next) =>{
     const token = req.cookies.token ;
-    console.log("tokent",token)
+    // console.log("tokent",token)
     if(!token){
         return res.json({success:false,errors:[{msg:"Unauthorized token not found"}]})
     }

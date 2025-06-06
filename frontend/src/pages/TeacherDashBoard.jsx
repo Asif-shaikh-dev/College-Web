@@ -5,18 +5,18 @@ import { useNavigate } from "react-router-dom";
 const TeacherDashboard = () => {
   const [students, setStudents] = useState([]);
   const [teacher, setTeacher] = useState([])
-const navigate = useNavigate();
-// const resetRequested = localStorage.setItem("");
+  const navigate = useNavigate();
+  // const resetRequested = localStorage.setItem("");
 
-  
-  
-      useEffect(() => {
-        const resetRequested = localStorage.getItem("teacherLoggedINBro");
-        if (!resetRequested) {
-          toast.error("You are not authorized to access this page");
-          navigate("/"); // Redirect if no request was made
-        }
-      }, []);
+
+
+  useEffect(() => {
+    const resetRequested = localStorage.getItem("teacherLoggedINBro");
+    if (!resetRequested) {
+      toast.error("You are not authorized to access this page");
+      navigate("/"); // Redirect if no request was made
+    }
+  }, []);
 
 
   const fetchStudents = async () => {
@@ -47,12 +47,12 @@ const navigate = useNavigate();
   return (
     <div className="mx-auto p-4 h-screen bg-black">
       <h2 className="text-xl w-full text-center text-white font-bold mb-4">{teacher.name} <span className="text-blue-300">({teacher.subject})</span>  - List Of Students </h2>
-      <div style={{padding:'5px'}} onClick={()=>{localStorage.removeItem("teacherLoggedINBro");navigate('/');toast.success("Logged Out!")}} className="fixed tacher-dashboard-logout top-5 right-5 p-4 cursor-pointer bg-white shadow-md rounded-md">
-       Logout
+      <div style={{ padding: '5px' }} onClick={() => { localStorage.removeItem("teacherLoggedINBro"); navigate('/'); toast.success("Logged Out!") }} className="fixed tacher-dashboard-logout top-5 right-5 p-4 cursor-pointer bg-white shadow-md rounded-md">
+        Logout
       </div>
 
       <table className="w-full text-center  border-gray-300">
-       <thead>
+        <thead>
           <tr className="bg-gray-200 ">
             <th className=" border-gray-300 px-4 py-2 ">Student ID</th>
             <th className=" border-gray-300 px-4 py-2">Name</th>
@@ -65,9 +65,9 @@ const navigate = useNavigate();
             <th className=" border-gray-300 px-4 py-2">Parent Contact</th>
             <th className=" border-gray-300 px-4 py-2">Father's Name</th>
           </tr>
-       </thead>
-       <tbody>
-           {students.map((student) => (
+        </thead>
+        <tbody>
+          {students.map((student) => (
             <tr key={student._id} className="text-black">
               <td className="border  border-gray-300 px-4 py-2">{student.studentId}</td>
               <td className="border border-gray-300 px-4 py-2">{student.fullname}</td>
@@ -81,9 +81,9 @@ const navigate = useNavigate();
               <td className="border border-gray-300 px-4 py-2">{student.fatherName}</td>
             </tr>
           ))}
-       </tbody>
-       
-       
+        </tbody>
+
+
       </table>
     </div>
 
