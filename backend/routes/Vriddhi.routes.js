@@ -105,7 +105,7 @@ router.post('/admission', upload.fields([
         let documents = student.documents || {};
         if (req.files) {
             Object.keys(req.files).forEach((key) => {
-                documents[key] = `${process.env.PRODUCTION_URL}/uploads/${req.files[key][0].filename}`;
+                documents[key] = `${process.env.PRODUCTION_URL2}/uploads/${req.files[key][0].filename}`;
             });
         }
      
@@ -136,7 +136,7 @@ router.post('/admission', upload.fields([
         await student.save(); // Update the student in the database
 
         try {
-            await axios.post(`${process.env.PRODUCTION_URL}/vriddhi/approval`, {
+            await axios.post(`${process.env.PRODUCTION_URL2}/vriddhi/approval`, {
                 studentId: student.studentId,
                 fullname: student.fullname,
                 email: student.email,
