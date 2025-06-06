@@ -32,6 +32,8 @@ const Login_8StudRegistrationInfoConfirmContinue = () => {
 
     const { student, setStudent, backendUrl, selectedMenu, setSelectedMenu } = useContext(StudentDataContext)
 
+  
+
     const [isSidebarOpen, setSidebarOpen] = useState(true);
     const [openDropdown, setOpenDropdown] = useState(null);
     const [isToggled, setIsToggled] = useState(false); // For sidebar button rotation
@@ -55,6 +57,7 @@ const Login_8StudRegistrationInfoConfirmContinue = () => {
             setFromStatus('Not Submmited')
         }
     }, [student.status]); // Runs only when student.status changes
+
 
     // Toggle Sidebar
     const toggleSideBar = () => {
@@ -148,8 +151,10 @@ const Login_8StudRegistrationInfoConfirmContinue = () => {
             // setMessage("Error processing payment.");
         }
     };
-
+   
+ 
     const [formData, setFormData] = useState({
+        studentId: "", // Ensure studentId is set
         fullName: "",
         dob: "",
         gender: "",
@@ -181,6 +186,7 @@ const Login_8StudRegistrationInfoConfirmContinue = () => {
             adharCard: null,
         },
     });
+    formData.studentId = student.studentId;
     // const handleChange = (e) => {
     //     const { name, value } = e.target;
     //     setFormData((prev) => ({ ...prev, [name]: value })); // Update the field
@@ -287,26 +293,23 @@ const Login_8StudRegistrationInfoConfirmContinue = () => {
         try {
             const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/vriddhi/admission`, formDataToSend);
 
-            // console.log("Admission Submitted:", response.data);
+            console.log("Admission Submitted:", response.data);
 
             if (response.status === 200) {
                 toast.success("Admission form submitted successfully!")
                 setSelectedMenu('home')
-                // toggleSideBar()
-
-
-                // setSelectedMenu('submmitedAddmissionFrom')
-                // alert("Admission form submitted successfully!");
-                // alert("Form submitted successfully!");
-            } else {
+            } else if(response.status === 401){ 
+                toast.error("Please verify your email before submitting the form.");
+            }
+           else{
                 toast.error(response.data.error || "Error submitting form");
                 toast.error("Error in data");
                 alert("Error in data");
             }
         } catch (error) {
 
-            console.error("Submission Error:", error.response?.data?.error || error.message);
-            toast.error(error.response?.data?.error || error.message);
+            console.error("Submission Error:", error.response.data.message);
+            toast.error(error.response.data.message);
 
         }
     };
@@ -772,9 +775,9 @@ const Login_8StudRegistrationInfoConfirmContinue = () => {
                                                 className="input-field-padding border text-white  border-gray-300 rounded-lg focus:ring-2  peer "
                                             >
                                                 <option value="" className="bg-black text-white">Gender</option>
-                                                <option className="bg-black text-white">Male</option>
-                                                <option className="bg-black text-white">Female</option>
-                                                <option className="bg-black text-white">Other</option>
+                                                <option value="Male" className="bg-black text-white">Male</option>
+                                                <option value="Female" className="bg-black text-white">Female</option>
+                                                <option value="Other" className="bg-black text-white">Other</option>
                                             </select>
                                         </div>
 
@@ -1071,7 +1074,7 @@ const Login_8StudRegistrationInfoConfirmContinue = () => {
 
                                 {/* Submit Button */}
                                 <button
-
+                                    disabled={!student || !student.studentId}
                                     type="submit"
                                     className="submit-btn-margin bg-indigo-600 text-white py-3 px-6 rounded-lg font-semibold cursor-pointer hover:bg-indigo-700 transition-colors"
                                 >

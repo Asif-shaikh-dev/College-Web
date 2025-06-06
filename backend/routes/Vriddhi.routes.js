@@ -56,11 +56,10 @@ router.post('/admission', upload.fields([
 ]), async (req, res) => {
     try {
 
-        // console.log("Request Body:", req.body);
-        // console.log("Files Uploaded:", req.files);
 
 
-        const { email, courseSelection, gender, mobile, fatherName, motherName, parentContact, currAddress,
+
+        const { email,studentId, courseSelection, gender, mobile, fatherName, motherName, parentContact, currAddress,
             tenthBoard, tenthYear, tenthPercentage, collegeName, stream,
             twelfthPercentage, subjects } = req.body;
 
@@ -92,15 +91,17 @@ router.post('/admission', upload.fields([
 
 
         // Check if the student exists
-        let student = await studentModel.findOne({ email });
+        let student = await studentModel.findOne({ studentId });
 
-        // console.log("Student Found:", student);
-
+        console.log("student found", student)
         if (!student) {
-            return res.status(401).json({ success: false, message: "Student not registered" });
+            return res.status(401).json({ success: false, message: "Student Not Registered" });
         }
-
-       
+    
+        if( student.email !== email) {
+            return res.status(401).json({ success: false, message: "Email ID does not match with Student ID" });
+        }
+        
 
         let documents = student.documents || {};
         if (req.files) {
