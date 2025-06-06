@@ -23,28 +23,7 @@ const Login2TeachRegistration = () => {
         "BA": ["History", "Political Science", "Sociology", "Psychology"],
         "BSC": ["Physics", "Chemistry", "Mathematics", "Biology"],
     };
-    //   const courseSubjects = {
-    //     "BSC CS": {
-    //         default: ["C++", "Java", "DBMS"],
-    //         optional: ["Mathematics", "Statistics"]
-    //     },
-    //     "BBA": {
-    //         default: ["Business Studies", "Economics"],
-    //         optional: ["Marketing", "Finance"]
-    //     },
-    //     "BCom": {
-    //         default: ["Accounting", "Business Law"],
-    //         optional: ["Banking", "Taxation"]
-    //     },
-    //     "BA": {
-    //         default: ["History", "Political Science"],
-    //         optional: ["Sociology", "Psychology"]
-    //     },
-    //     "BSC": {
-    //         default: ["Physics", "Chemistry"],
-    //         optional: ["Mathematics", "Biology"]
-    //     }
-    // };
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -60,7 +39,7 @@ const Login2TeachRegistration = () => {
             });
             if (response.data.success) {
                 toast.success(response.data.message)
-
+                navigate('/')
             } else {
 
                 toast.error(response.data.message)

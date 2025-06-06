@@ -1,12 +1,12 @@
 const port = process.env.PORT || 4000;
 const http = require('http')
-const path = require('path')
+// const path = require('path')
 const app = require('./app')
 const express = require('express')
 const server = http.createServer(app);
 
 
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+// app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 
 // const localImagePath = path.join(__dirname, "uploads", "1742811610055-personimg.jfif");

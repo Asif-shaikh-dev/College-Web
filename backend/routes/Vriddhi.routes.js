@@ -105,7 +105,7 @@ router.post('/admission', upload.fields([
         let documents = student.documents || {};
         if (req.files) {
             Object.keys(req.files).forEach((key) => {
-                documents[key] = `http://localhost:4000/uploads/${req.files[key][0].filename}`;
+                documents[key] = `${process.env.PRODUCTION_URL}/uploads/${req.files[key][0].filename}`;
             });
         }
      
@@ -135,24 +135,8 @@ router.post('/admission', upload.fields([
 
         await student.save(); // Update the student in the database
 
-        // console.log("Files received:", req.files);
-        // tenthMarksheet: [
-        //     {
-        //       fieldname: 'tenthMarksheet',
-        //       originalname: 'WIN_20250123_00_03_12_Pro.jpg',
-        //       encoding: '7bit',
-        //       mimetype: 'image/jpeg',
-        //       destination: 'uploads/',
-        //       filename: '1742634297702-WIN_20250123_00_03_12_Pro.jpg',
-        //       path: 'uploads\\1742634297702-WIN_20250123_00_03_12_Pro.jpg',
-        //       size: 121125
-        //     }
-
-
-        // You can add additional processing logic here (e.g., saving data to the database)
-
         try {
-            await axios.post(`http://localhost:4000/vriddhi/approval`, {
+            await axios.post(`${process.env.PRODUCTION_URL}/vriddhi/approval`, {
                 studentId: student.studentId,
                 fullname: student.fullname,
                 email: student.email,

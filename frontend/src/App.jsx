@@ -40,7 +40,6 @@ const App = () => {
       <Route path='/login_1StudRegisterInfo' element={<Login_1StudRegistrationInfo />} />
       <Route path='/login_2StudRegistrationInfo' element={<Login_2StudRegistrationInfo />} />
       <Route path='/login_3StudLogin' element={<StudentLogin />} />
-      <Route path='/application-list' element={<ApplicationList />} />
       <Route path='/hod-dashboard' element={<HodDashboard />} />
       <Route path='/teacher-dashboard' element={<TeacherDashBoard />} />
       <Route path='/Login_2Teachregistration' element={<TeacherRegister />} />
@@ -51,6 +50,11 @@ const App = () => {
         <Login_8StudRegistrationInfoConfirmContinue />
         </ErrorBoundary>
         } />
+        <Route path='/application-list' element={
+          <ErrorBoundary>
+          <ApplicationList />
+          </ErrorBoundary>
+          } />
 
       
       <Route path='/change-password' element={<StudChangePass />} />

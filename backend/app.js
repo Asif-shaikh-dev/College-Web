@@ -13,6 +13,8 @@ const hodRoutes = require('./routes/hodRoutes')
 const teacherRoutes = require('./routes/teacher.routes')
 // const captainRoutes= require('./routes/captain.routes')
 
+const path = require('path');
+
 connectDb()
 app.set("trust proxy", 1);
 
@@ -27,7 +29,10 @@ app.use(cors({
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser())
+ // make sure it's at the top
 
+// Serve /uploads folder statically
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 
 app.get('/', (req, res) => res.send('Hello World!'))
