@@ -24,7 +24,7 @@ const StaffLogin = () => {
       }
     }, []);
 
-  
+    const [isLogging,setIsLogging] = useState(false);
     const [step, setStep] = useState(1); // 1: Enter Email, 2: Enter OTP & Password
     const [email, setEmail] = useState("");
     const [otp, setOtp] = useState("");
@@ -89,6 +89,7 @@ const StaffLogin = () => {
     const handleLogin = async (e) => {
       e.preventDefault();
       setError("");
+      setIsLogging(true);
   
       if (!userType || !email2 || !password) {
         toast.error("All fields are required. bro");  
@@ -102,10 +103,11 @@ const StaffLogin = () => {
           email2,
           password,
         },{withCredentials:true});
-  
+        
         if (response.status ===201) {
           // alert("Login successful!");
           toast.success("Login Successful!")
+          setIsLogging(false);
           if(userType==='HOD'){
             localStorage.setItem("HODLoggedINBro", "HOD");
             navigate('/hod-dashboard');
@@ -208,7 +210,7 @@ const StaffLogin = () => {
                     
                     </div>
                     <div className="button_container flex gap-5">
-                        <button className='font-bold' >Click to Login</button>
+                        <button className='font-bold' >{isLogging? "Logging.." : "Click to login"}</button>
                         <button className='font-bold'>Click to Reset</button>
                     </div>
                 </form>
